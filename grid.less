@@ -1,0 +1,37 @@
+@row-width:100%;
+@row-padding:0;
+@row-margin:0;
+@num-of-columns:12;
+@full-column-width:100%;
+@column-padding:0px 10px 0px 20px;
+@column-min-width:100px;
+
+
+@import "configuration";
+
+.row {
+  display: block;
+  width: @row-width;
+  padding: @row-padding;
+  margin: @row-margin;
+  &::after, &::before{
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+  .column-loop (@num-of-columns, @i) when (@i =< @num-of-columns){
+    .col-@{i}{
+      width: @full-column-width/@num-of-columns*@i;
+
+      min-width: @column-min-width;
+      padding: @column-padding;
+
+      box-sizing: border-box;
+      float: left;
+    }
+    .column-loop(@num-of-columns, @i+1);
+  }
+
+  .column-loop(@num-of-columns,1);
+}
