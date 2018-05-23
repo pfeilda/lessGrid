@@ -5,11 +5,12 @@
 @full-column-width:100%;
 @column-padding:0px 10px 0px 20px;
 @column-min-width:100px;
+@prefix:grid-;
 
 
 @import "configuration";
 
-.row {
+.@{prefix}row {
   display: block;
   width: @row-width;
   padding: @row-padding;
@@ -21,7 +22,7 @@
   }
 
   .column-loop (@num-of-columns, @i) when (@i =< @num-of-columns){
-    .col-@{i}{
+    .@{prefix}col-@{i}{
       width: @full-column-width/@num-of-columns*@i;
 
       min-width: @column-min-width;
